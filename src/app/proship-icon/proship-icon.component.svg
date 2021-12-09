@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <path d="
+  <!-- <path d="
 M 16,4
 L 4,16
-L 18,29.5
-L 16,31.5
+L 18,30
+L 16,32
 L 1,17
 A 1.5,1.5 0 0,1 1,15
 L 15,1
@@ -13,5 +13,7 @@ A 1.5,1.5 0 0,1 31,17
 L 21.5,26.5
 A 1,1 0 0,1 20,24
 L 28,16
-Z" fill="currentColor" color="inherit" />
+Z" fill="currentColor" color="inherit" /> -->
+
+<path [attr.d]="path" fill="currentColor" color="inherit" />
 </svg>
