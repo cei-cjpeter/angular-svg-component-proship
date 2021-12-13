@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./proship-icon.component.css'],
 })
 export class ProshipIconComponent implements OnInit {
-  @Input() thickness = 5;
+  @Input() thickness = 3;
 
   viewPortSize = 32;
   path: string;
@@ -18,11 +18,13 @@ export class ProshipIconComponent implements OnInit {
     const sqrtTwo = Math.sqrt(2);
     const y1 = (sqrtTwo * midLength - radius) / sqrtTwo;
     const x1 = midLength - y1;
-    console.log(x1, y1);
+    const gap = this.thickness * 2.5;
     this.path = `
-      M ${this.viewPortSize / 2},${this.thickness}
-      L ${this.thickness},${this.viewPortSize / 2}
-      L 18,${this.viewPortSize - this.thickness / 2}
+      M ${this.viewPortSize / 2},${this.thickness * sqrtTwo}
+      L ${this.thickness * sqrtTwo},${this.viewPortSize / 2}
+      L ${this.thickness / sqrtTwo + midLength},${
+      this.viewPortSize - this.thickness / sqrtTwo
+    }
       L ${this.viewPortSize / 2},${this.viewPortSize}
       L ${x1},${this.viewPortSize - y1}
       A ${radius},${radius} 0 0,1 ${x1},${y1}
@@ -32,9 +34,11 @@ export class ProshipIconComponent implements OnInit {
       A ${radius},${radius} 0 0,1 ${this.viewPortSize - x1},${
       this.viewPortSize - y1
     }
-      L 21.5,26.5
-      A ${radius / 2},${radius / 2} 0 0,1 20,24
-      L ${this.viewPortSize - this.thickness},${this.viewPortSize / 2}
+      L ${midLength + gap / sqrtTwo},${this.viewPortSize - gap / sqrtTwo}
+      A ${radius},${radius} 0 0,1 ${
+      midLength + (gap - this.thickness) / sqrtTwo
+    },${this.viewPortSize - (gap + this.thickness) / sqrtTwo}
+      L ${this.viewPortSize - this.thickness * sqrtTwo},${this.viewPortSize / 2}
       Z`;
   }
 }
